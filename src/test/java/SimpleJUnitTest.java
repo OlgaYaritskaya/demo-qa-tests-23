@@ -5,13 +5,14 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.byValue;
 import static com.codeborne.selenide.Selenide.*;
 
 public class SimpleJUnitTest {
     public static String _firstName = "Mary";
     public static String _lastName = "Poppins";
     public static String _email = "mary.poppins@pochta.ru";
+    public static String _userNumber = "1234567890";
+    public static String _currentAddress = "Vladivostok 2000";
     @BeforeAll
     public static void configureTests(){
         Configuration.pageLoadStrategy = "eager";
@@ -29,20 +30,19 @@ public class SimpleJUnitTest {
         $("#lastName").setValue(_lastName);
         $("#userEmail").setValue(_email);
         $("#genterWrapper").$(byText("Female")).click();
-        $("#userNumber").setValue("1234567890");
+        $("#userNumber").setValue(_userNumber);
         //setting date in calendar
-        $("#dateOfBirthInput").setValue("selenide");
-        $(".react-datepicker__year-select").click();
-        $(byValue("1999")).click();
-        $(".react-datepicker__month-select").click();
-        $(byText("March")).click();
-        $(".react-datepicker__day--019").click();
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__year-select").selectOption("1999");
+        $(".react-datepicker__month-select").selectOption("March");
+        $(".react-datepicker__day--019:not(.react-datepicker__day--outside-month)").click();
+
         $("#subjectsInput").setValue("Maths").pressEnter();
         //ticking check-box
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#uploadPicture").uploadFromClasspath("shrek.png");
-        $("#currentAddress").setValue("Vladivostok 2000");
+        $("#currentAddress").setValue(_currentAddress);
         $("#state").click();
         $("#react-select-3-input").val("Rajasthan").pressEnter();
         $("#city").click();
@@ -54,7 +54,7 @@ public class SimpleJUnitTest {
         $(".table-responsive").shouldHave(text("Female"));
         $(".table-responsive").shouldHave(text("1234567890"));
         $(".table-responsive").shouldHave(text("19 March,1999"));
-        $(".table-responsive").shouldHave(text("Sports"));
+        $(".table-responsive").shouldHave(text("Sports, Reading"));
         $(".table-responsive").shouldHave(text("shrek.png"));
         $(".table-responsive").shouldHave(text("Vladivostok 2000"));
         $(".table-responsive").shouldHave(text("Rajasthan Jaipur"));
