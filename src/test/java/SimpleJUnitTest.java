@@ -50,14 +50,14 @@ public class SimpleJUnitTest {
         $("#submit").click();
         //check for equality
         $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Mary Poppins"));
-        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("mary.poppins@pochta.ru"));
+        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text(email));
         $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Female"));
-        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("1234567890"));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text(userNumber));
         $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("19 March,1999"));
         $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text("Maths"));
         $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Sports, Reading"));
         $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("shrek.png"));
-        $(".table-responsive").$(byText("Address")).parent().shouldHave(text("Vladivostok 2000"));
+        $(".table-responsive").$(byText("Address")).parent().shouldHave(text(currentAddress));
         $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("Rajasthan Jaipur"));
 
         }
