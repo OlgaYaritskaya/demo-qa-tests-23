@@ -8,11 +8,11 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class SimpleJUnitTest {
-    public static String _firstName = "Mary";
-    public static String _lastName = "Poppins";
-    public static String _email = "mary.poppins@pochta.ru";
-    public static String _userNumber = "1234567890";
-    public static String _currentAddress = "Vladivostok 2000";
+    public static String firstName = "Mary";
+    public static String lastName = "Poppins";
+    public static String email = "mary.poppins@pochta.ru";
+    public static String userNumber = "1234567890";
+    public static String currentAddress = "Vladivostok 2000";
     @BeforeAll
     public static void configureTests(){
         Configuration.pageLoadStrategy = "eager";
@@ -26,11 +26,11 @@ public class SimpleJUnitTest {
         //closing ads and footer
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
-        $("#firstName").setValue(_firstName);
-        $("#lastName").setValue(_lastName);
-        $("#userEmail").setValue(_email);
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
+        $("#userEmail").setValue(email);
         $("#genterWrapper").$(byText("Female")).click();
-        $("#userNumber").setValue(_userNumber);
+        $("#userNumber").setValue(userNumber);
         //setting date in calendar
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOption("1999");
@@ -42,23 +42,25 @@ public class SimpleJUnitTest {
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#uploadPicture").uploadFromClasspath("shrek.png");
-        $("#currentAddress").setValue(_currentAddress);
+        $("#currentAddress").setValue(currentAddress);
         $("#state").click();
         $("#react-select-3-input").val("Rajasthan").pressEnter();
         $("#city").click();
         $("#react-select-4-input").val("Jaipur").pressEnter();
         $("#submit").click();
         //check for equality
-        $(".table-responsive").shouldHave(text("Mary Poppins"));
-        $(".table-responsive").shouldHave(text("mary.poppins@pochta.ru"));
-        $(".table-responsive").shouldHave(text("Female"));
-        $(".table-responsive").shouldHave(text("1234567890"));
-        $(".table-responsive").shouldHave(text("19 March,1999"));
-        $(".table-responsive").shouldHave(text("Sports, Reading"));
-        $(".table-responsive").shouldHave(text("shrek.png"));
-        $(".table-responsive").shouldHave(text("Vladivostok 2000"));
-        $(".table-responsive").shouldHave(text("Rajasthan Jaipur"));
-    }
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Mary Poppins"));
+        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("mary.poppins@pochta.ru"));
+        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Female"));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("1234567890"));
+        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("19 March,1999"));
+        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text("Maths"));
+        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Sports, Reading"));
+        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("shrek.png"));
+        $(".table-responsive").$(byText("Address")).parent().shouldHave(text("Vladivostok 2000"));
+        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("Rajasthan Jaipur"));
+
+        }
     @AfterAll
     public static void clearAll() {
         clearBrowserCookies();
