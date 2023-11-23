@@ -9,10 +9,10 @@ import static com.codeborne.selenide.Selenide.*;
 public class BaseTest {
     @BeforeAll
     static void beforeAll() {
+        Configuration.browser = "firefox";
+        Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.browserSize = "1920x1080";
         Configuration.holdBrowserOpen = true;
-        Configuration.baseUrl ="https://demoqa.com";
     }
 
     @AfterEach
