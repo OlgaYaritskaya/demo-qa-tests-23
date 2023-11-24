@@ -6,7 +6,7 @@ import pages.StudentRegFormPage;
 import pages.UserData;
 import pages.components.ResultTableComponent;
 
-public class SimpleJUnitTest extends BaseTest {
+public class StudentRegistrationTests extends BaseTest {
     @Test
     @DisplayName("Пользователь успешно зарегистрирован")
     void successfullUserRegistrationTest() {
@@ -31,7 +31,7 @@ public class SimpleJUnitTest extends BaseTest {
                 .submit();
 
         resultTable
-                .checkResult("Student Name", userData.firstName + " "+userData.lastName)
+                .checkResult("Student Name", userData.firstName + " " + userData.lastName)
                 .checkResult("Student Email", userData.email)
                 .checkResult("Gender", userData.gender)
                 .checkResult("Mobile", userData.mobile)
@@ -46,7 +46,21 @@ public class SimpleJUnitTest extends BaseTest {
 @Test
 @DisplayName("Заполнены только обязательные поля")
     void onlyMandatoryFieldsAreFilledInTest() {
+    StudentRegFormPage studentRegFormPage = new StudentRegFormPage();
+    UserData userData = new UserData();
+    ResultTableComponent resultTable = new ResultTableComponent();
 
+    studentRegFormPage
+            .openPageAndVerifyTitle()
+            .removeAdsAndFooter()
+            .setFirstAndLastName(userData.firstName, userData.lastName)
+            .setEmail(userData.email)
+            .setGender(userData.gender);
+
+    resultTable
+            .checkResult("Student Name", userData.firstName + " " + userData.lastName)
+            .checkResult("Student Email", userData.email)
+            .checkResult("Gender", userData.gender);
 }
 @Test
 @DisplayName("Какая-то негативная проверка ")
