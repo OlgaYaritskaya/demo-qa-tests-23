@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.StudentRegFormPage;
-import pages.UserData;
+import data.UserData;
 import pages.components.ResultTableComponent;
 
 public class StudentRegistrationTests extends BaseTest {

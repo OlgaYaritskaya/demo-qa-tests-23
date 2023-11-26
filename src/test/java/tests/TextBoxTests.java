@@ -3,7 +3,7 @@ package tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
-import pages.UserData;
+import data.UserData;
 
 public class TextBoxTests extends BaseTest {
     @Test
