@@ -25,7 +25,7 @@ public class StudentRegistrationTests extends BaseTest {
                 .setSubject(userData.subject)
                 .setDateOfBirth(userData.year, userData.month, userData.day)
                 .setHobby(userData.hobby)
-                .uploadPicture("shrek.png")
+                .uploadPicture(userData.picture)
                 .setCurrentAddress(userData.address)
                 .setState(userData.state)
                 .setCity(userData.city)
