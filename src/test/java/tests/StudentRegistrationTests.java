@@ -39,7 +39,7 @@ public class StudentRegistrationTests extends BaseTest {
                 .checkResult("Date of Birth", userData.day + " " + userData.month + "," + userData.year)
                 .checkResult("Subjects", userData.subject)
                 .checkResult("Hobbies", userData.hobby)
-                .checkResult("Picture", "shrek.png")
+                .checkResult("Picture", userData.picture)
                 .checkResult("Address", userData.address)
                 .checkResult("State and City", userData.state + " " + userData.city);
     }
