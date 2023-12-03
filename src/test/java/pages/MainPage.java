@@ -6,18 +6,17 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
 
 public class MainPage {
-    private final SelenideElement
-            SEARCH_INPUT = $("[type = 'text']");
-
+    private final SelenideElement SEARCH_ICON = $("href='/search/'");
     public MainPage openAndVerifyPage() {
-        open(" ");
-        webdriver().shouldHave(url("https://www.ozon.ru/"));
+        open("");
+        webdriver().shouldHave(url("https://sport-marafon.ru"));
         return this;
     }
 
-    public SearchResultsPage setSearchQuery(String query) {
-        SEARCH_INPUT.sendKeys(query);
-        return new SearchResultsPage();
+    public SearchPage navigateTo() {
+        SEARCH_ICON.click();
+        webdriver().shouldHave(url("https://sport-marafon.ru" + "/search"));
+        return new SearchPage();
     }
 }
 

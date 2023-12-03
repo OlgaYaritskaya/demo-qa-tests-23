@@ -7,12 +7,11 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class SearchResultsPage {
     private final SelenideElement
-            PAGINATOR_CONTENT_LOCATOR = $("#paginatorContent"),
-            SEARCH_RESULTS_LINK = $("[href*='/product/']");
+            SEARCH_RESULTS_PRODUCT = $("[href*='/catalog/']");
 
 
     public SearchResultsPage verifyTheListIsNotEmpty() {
-        SEARCH_RESULTS_LINK.shouldBe(Condition.visible);
+        SEARCH_RESULTS_PRODUCT.shouldBe(Condition.visible);
         return this;
     }
 }

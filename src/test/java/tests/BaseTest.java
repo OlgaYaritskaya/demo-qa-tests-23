@@ -11,7 +11,7 @@ public class BaseTest {
     public static void beforeAll() {
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.baseUrl = "https://www.ozon.ru/";
+        Configuration.baseUrl = "https://sport-marafon.ru";
         Configuration.holdBrowserOpen = true;
     }
 
