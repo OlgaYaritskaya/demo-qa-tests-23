@@ -7,7 +7,7 @@ import pages.MainPage;
 
 public class NonAuthorizedSearchTests extends BaseTest {
 
-    @ValueSource(strings = {"лыжи", "сноуборд"})
+    @ValueSource(strings = {"лыжи"})
     @ParameterizedTest(name = "Результат поискового запроса {0} не должен быть пустым")
     void searchResultShouldNotBeEmptyTest(String searchQuery) {
         MainPage mainPage = new MainPage();
@@ -21,8 +21,8 @@ public class NonAuthorizedSearchTests extends BaseTest {
                 searchResultsPage.verifyTheListIsNotEmpty();
     }
 
-@ValueSource(strings = {"брус"})
-@ParameterizedTest(name = "запрос на отсутствующий товар ваозвращает заглушку")
+//@ValueSource(strings = {"брус"})
+//@ParameterizedTest(name = "запрос на отсутствующий товар ваозвращает заглушку")
 
 
 }

@@ -9,7 +9,7 @@ public class MainPage {
     private final SelenideElement SEARCH_ICON = $("href='/search/'");
     public MainPage openAndVerifyPage() {
         open("");
-        webdriver().shouldHave(url("https://sport-marafon.ru"));
+        webdriver().shouldHave(url("https://sport-marafon.ru/"));
         return this;
     }
 
