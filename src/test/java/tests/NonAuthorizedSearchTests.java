@@ -2,6 +2,7 @@ package tests;
 
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -29,7 +30,7 @@ public class NonAuthorizedSearchTests extends BaseTest {
     @ParameterizedTest(name = "При пустом запросе показывается баннер с преимуществами")
     @Tag("Web")
     @Severity(SeverityLevel.MINOR)
-    void emptySearchQueryShouldReturnAdvantagesBanner(String searchQuery){
+    void emptySearchQueryShouldReturnAdvantagesBanner(String searchQuery) {
         MainPage mainPage = new MainPage();
         mainPage.openAndVerifyPage();
 
@@ -37,8 +38,15 @@ public class NonAuthorizedSearchTests extends BaseTest {
         searchResults.verifyAdvantagesBannerIsShown();
     }
 
-//@ValueSource(strings = {"брус"})
-//@ParameterizedTest(name = "запрос на отсутствующий товар ваозвращает заглушку")
+    @Test
+    @DisplayName("На странице Возврат товара есть заявление на возврат и обмен товара")
+    void returnInstructionsPageContainsRefundAndReturnSampleFormsTest() {
+        MainPage mainPage = new MainPage();
+        mainPage.openAndVerifyPage();
+        var dostavkaIOplataPage = mainPage.navigateTo(mainPage.DOSTAVKA_I_OPLATA_PAGE);
+        var returnPage = dostavkaIOplataPage.navigateTo(dostavkaIOplataPage.RETURN_PAGE);
 
+        returnPage.shouldContainRefundRequestSample();
+    }
 
 }
