@@ -9,7 +9,7 @@ public class MainPage {
     public final String DOSTAVKA_I_OPLATA_PAGE = "/oplata-i-dostavka/";
     private final SelenideElement SEARCH_ICON = $("#head-search-btn");
     private final SelenideElement SEARCH_INPUT = $("#head-search-input");
-    private final SelenideElement dostavkaIOplataButton = $(".header-menu__link href='oplata-i-dostavka'");
+    private final SelenideElement dostavkaIOplataButton = $(".header-menu__item [href*='/oplata-i-dostavka']");
     public MainPage openAndVerifyPage() {
         open("");
         webdriver().shouldHave(url("https://sport-marafon.ru/"));

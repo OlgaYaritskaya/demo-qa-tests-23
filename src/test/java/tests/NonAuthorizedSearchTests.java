@@ -35,6 +35,7 @@ public class NonAuthorizedSearchTests extends BaseTest {
         mainPage.openAndVerifyPage();
 
         var searchResults = mainPage.setSearchQuery(searchQuery);
+
         searchResults.verifyAdvantagesBannerIsShown();
     }
 
@@ -42,11 +43,16 @@ public class NonAuthorizedSearchTests extends BaseTest {
     @DisplayName("На странице Возврат товара есть заявление на возврат и обмен товара")
     void returnInstructionsPageContainsRefundAndReturnSampleFormsTest() {
         MainPage mainPage = new MainPage();
-        mainPage.openAndVerifyPage();
-        var dostavkaIOplataPage = mainPage.navigateTo(mainPage.DOSTAVKA_I_OPLATA_PAGE);
-        var returnPage = dostavkaIOplataPage.navigateTo(dostavkaIOplataPage.RETURN_PAGE);
+        mainPage
+                .openAndVerifyPage();
 
-        returnPage.shouldContainRefundRequestSample();
+        var dostavkaIOplataPage =
+                mainPage.navigateTo(mainPage.DOSTAVKA_I_OPLATA_PAGE);
+
+        var returnPage =
+                dostavkaIOplataPage.navigateTo(dostavkaIOplataPage.RETURN_PAGE);
+
+        returnPage.shouldContainRefundAndExchangeRequestSamples();
     }
 
 }

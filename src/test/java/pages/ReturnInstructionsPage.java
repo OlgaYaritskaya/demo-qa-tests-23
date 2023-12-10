@@ -9,7 +9,10 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 
 public class ReturnInstructionsPage {
     private final SelenideElement TITLE = $(".h1");
-    private final SelenideElement refundRequestSample = $("href='https://sport-marafon.ru/upload/medialibrary/sport-marafon_exchange-edit.pdf'");
+    private final SelenideElement EXCHANGE_GOODS_QUERY =
+            $("[href*='medialibrary/sport-marafon_exchange-edit.pdf']");
+    private final SelenideElement REFUND_GOODS_QUERY =
+            $("[href*='/upload/medialibrary/sport-marafon_return-edit']");
 
     public ReturnInstructionsPage verifyUrl() {
         webdriver().shouldHave(url("https://sport-marafon.ru" + "/oplata-i-dostavka/return"));
@@ -20,9 +23,11 @@ public class ReturnInstructionsPage {
         TITLE.shouldHave(Condition.text(value));
         return this;
     }
-public ReturnInstructionsPage shouldContainRefundRequestSample(){
-        refundRequestSample.shouldBe(Condition.visible);
+
+    public ReturnInstructionsPage shouldContainRefundAndExchangeRequestSamples() {
+        EXCHANGE_GOODS_QUERY.shouldBe(Condition.visible);
+        REFUND_GOODS_QUERY.shouldBe(Condition.visible);
         return this;
-}
+    }
 
 }
