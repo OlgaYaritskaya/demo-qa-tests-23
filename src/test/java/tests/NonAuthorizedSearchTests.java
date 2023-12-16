@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.MainPage;
@@ -55,6 +56,19 @@ public class NonAuthorizedSearchTests extends BaseTest {
                 dostavkaIOplataPage.navigateTo(dostavkaIOplataPage.RETURN_PAGE);
 
         returnPage.shouldContainRefundAndExchangeRequestSamples();
+    }
+
+    @CsvSource(value = {
+            "лыжи, lyzhi",
+            "шлем, shlem"
+    })
+    @ParameterizedTest(name = "Для запроса {0} в ссылке в карточке товара должно быть {1} ")
+    @Tag("Web")
+    @Severity(SeverityLevel.MINOR)
+    void SearchResultsShouldContainSearchWord(String searchQuery, String expectedLink) {
+        MainPage mainPage = new MainPage();
+
+
     }
 
 }
