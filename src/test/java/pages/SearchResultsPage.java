@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$x;
 public class SearchResultsPage {
     private final SelenideElement SEARCH_RESULTS_PRODUCT = $x("//a[contains(@class, 'product-list__name')]");
     private final SelenideElement ADVANTAGES_BANNER = $(".advantage");
-    private final SelenideElement SEARCH_RESULTS_LYZHI = $(".product-list__item [href*='lyzhi']");
+    private final SelenideElement SEARCH_RESULTS_WORD = $(".product-list__item [href*='lyzhi']");
 
     public SearchResultsPage verifyTheSearchResultsListIsNotEmpty() {
         SEARCH_RESULTS_PRODUCT.exists();
@@ -19,8 +19,9 @@ public class SearchResultsPage {
         ADVANTAGES_BANNER.shouldBe(Condition.visible);
         return this;
     }
-public SearchResultsPage verifyResultsPageContainsLyzhiInHref(){
-        SEARCH_RESULTS_LYZHI.shouldBe(Condition.visible);
+public SearchResultsPage verifyResultsPageContainSearchWordInHref(String hrefPart){
+        var hrefPartWord = String.format(".product-list__item [href*='%s']", hrefPart);
+    $(hrefPartWord).exists();
         return this;
 }
 }

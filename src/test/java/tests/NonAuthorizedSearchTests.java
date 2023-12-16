@@ -65,9 +65,14 @@ public class NonAuthorizedSearchTests extends BaseTest {
     @ParameterizedTest(name = "Для запроса {0} в ссылке в карточке товара должно быть {1} ")
     @Tag("Web")
     @Severity(SeverityLevel.MINOR)
-    void SearchResultsShouldContainSearchWord(String searchQuery, String expectedLink) {
+    void SearchResultsShouldContainSearchWord(String searchQuery, String expectedLinkPart) {
         MainPage mainPage = new MainPage();
+        mainPage
+                .openAndVerifyPage();
+        var searchResultsPage = mainPage.setSearchQuery(searchQuery);
 
+        searchResultsPage
+                .verifyResultsPageContainSearchWordInHref(expectedLinkPart);
 
     }
 
