@@ -13,6 +13,7 @@ public class BaseTest {
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://sport-marafon.ru";
         //Configuration.holdBrowserOpen = true;
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 
     @AfterEach
