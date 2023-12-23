@@ -9,7 +9,7 @@ repositories {
 
 def
         allureVersion = "2.21.0",
-selenideVersion = "6.19.1"
+        selenideVersion = "6.19.1"
 
 allure {
     report {
@@ -19,7 +19,8 @@ allure {
         aspectjWeaver.set(true) // обработка аннотации @Step
         frameworks {
             junit5 {
-                adapterVersion.set(allureVersion) //версия Allure JUnit5 (https://github.com/allure-framework/allure-java)
+                adapterVersion.set(allureVersion)
+                //версия Allure JUnit5 (https://github.com/allure-framework/allure-java)
             }
         }
     }
@@ -45,6 +46,13 @@ tasks.withType(Test) {
         }
     }
 }
+
+task web_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("Web")
+    }
+}
+
 compileJava {
     options.encoding = 'UTF-8'
 }

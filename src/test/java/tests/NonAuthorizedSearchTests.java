@@ -42,7 +42,7 @@ public class NonAuthorizedSearchTests extends BaseTest {
 
     @Test
     @DisplayName("На странице Возврат товара есть заявление на возврат и обмен товара")
-    @Tag("Web")
+    @Tag("Document")
     @Severity(SeverityLevel.NORMAL)
     void returnInstructionsPageContainsRefundAndReturnSampleFormsTest() {
         MainPage mainPage = new MainPage();
